@@ -3,12 +3,14 @@
 class Empleados{
     private:
     std::string nombre, turno;
-    int codempleado, contrasena;
+    int codempleado, contrasena, num_emp=0;
     float sueldo, paga;
 
     public:
     Empleados(): nombre(""), turno(""), codempleado(0), contrasena(0), sueldo(0), paga (0){};
-    Empleados(std::string nom, std::string turn, int codemp, int cont, float suel): nombre(nom), turno(turn), codempleado(codemp), contrasena(cont), sueldo(suel), paga(suel){};
+    Empleados(std::string nom, std::string turn, int cont, float suel): nombre(nom), turno(turn), codempleado(num_emp), contrasena(cont), sueldo(suel), paga(0){
+        num_emp = num_emp + 1;
+    };
 
     std::string get_nombre();
     std::string get_turno();
@@ -22,7 +24,7 @@ class Empleados{
     void set_contrasena(int);
     void set_codempleado(int);
     void set_sueldo(float);
-    // Paga no tiene "set" porque no se altera directamente, si no a traves del sueldo, bono y descuento
+    void set_paga(float);
 
     void bono(float bon);
     void descuento(float desc);
@@ -72,10 +74,14 @@ void Empleados::set_sueldo(float suel){
     sueldo = suel;
 }
 
+void Empleados::set_paga(float pag){
+    paga = pag;
+}
+
 void Empleados::bono(float bon){
-    paga = paga + paga * bon;
+    paga = paga + sueldo * bon;
 }
 
 void Empleados::descuento(float desc){
-    paga = paga - paga * desc;
+    paga = paga - sueldo * desc;
 }

@@ -4,137 +4,134 @@
 #include "empleados.h"
 #include "jefe.h"
 
+std::string nom_j;
+int cont_j, contra, opcion, op;
+float a;
+bool continuar;
+bool cont;
+
+Articulo agua("Botella de agua",50,4.5,7.5);
+Empleados Juan("Juan Perez","matutino",1234,5000);
+
 int main(){
-    Articulo agua("Botella de agua",50,0,4.5,7.5);
-    Empleados Juan("Juan Perez","matutino",2,1234,5000);
-    Jefe Ana("Ana Garcia",1,9876,20000);
-    int opcion;
-    double continua = true;
-
-    while (continua == true){
-        std::cout << "1. Checar articulos: compra" << std::endl;
-        std::cout << "2. Checar articulos: venta" << std::endl;
-        std::cout << "3. Checar empleados: bono" << std::endl;
-        std::cout << "4. Checar empleados: descuento" << std::endl;
-        std::cout << "5. Checar jefe: retiro" << std::endl;
-        std::cout << "6. Checar jefe: aumento" << std::endl;
-        std::cout << "7. Salir" << std::endl;
-        std::cout << "Elige una opcion: ";
+    std::cout << "Primero ingrese los datos del Jefe" << std::endl;
+    std::cout << "Escribe el nombre del jefe: ";
+    getline(std::cin,nom_j);
+    std::cout << "Escribe la contrasena: ";
+    std::cin >> cont_j;
+    Jefe usuario(nom_j,cont_j);
+    std::cout << std::endl;
+    std::cout << "Datos del jefe:" << std::endl;
+    std::cout << "Nombre: " << usuario.get_nombre() << std::endl;
+    std::cout << "Codigo: " << usuario.get_codigo() << std::endl;
+    std::cout << "Contrasena: " << usuario.get_contrasena() << std::endl;
+    std::cout << std::endl; 
+    cont = true;   
+    while (cont == true){
+        std::cout << std::endl; 
+        std::cout << "(Ingresa 0 si deseas salir)" << std::endl;
+        std::cout << "Si deseas ingresar como jefe, oprime 1, si deseas ingresar como empleado, ingresa 2: ";
         std::cin >> opcion;
-
         switch (opcion){
+            case 0:
+                cont = false;
+            break;
             case 1:
-            int comp;
-            std::cout << std::endl;
-            std::cout << "Botellas compradas: ";
-            std::cin >> comp;
-            std::cout << "Producto: " << agua.get_nombre() << std::endl;
-            std::cout << "Codigo: : " << agua.get_codigo() << std::endl;
-            std::cout << "Precio compra: " << agua.get_pcompra() << std::endl;
-            std::cout << "Precio venta: " << agua.get_pventa() << std::endl;
-            std::cout << "Existencias: " << agua.get_existencia() << std::endl;
-            agua.compra(comp);
-            std::cout << std::endl;
-            std::cout << "Producto: " << agua.get_nombre() << std::endl;
-            std::cout << "Codigo: : " << agua.get_codigo() << std::endl;
-            std::cout << "Precio compra: " << agua.get_pcompra() << std::endl;
-            std::cout << "Precio venta: " << agua.get_pventa() << std::endl;
-            std::cout << "Existencias despues de compra: " << agua.get_existencia() << std::endl;
-            std::cout << std::endl;
+                std::cout << std::endl; 
+                std::cout << "(Ingresa 0 si deseas salir)" << std::endl;
+                std::cout << "Ingresar contrasena: ";
+                std::cin >> contra;
+                std::cout << std::endl;
+                if (contra == usuario.get_contrasena()){
+                    continuar = true;
+                    while (continuar == true){
+                        std::cout << std::endl;
+                        std::cout << "Bienvenid@ " << usuario.get_nombre() << std::endl;
+                        std::cout << "MENU DE JEFE: " << std::endl;
+                        std::cout << "1. Consultar empleado" << std::endl;
+                        std::cout << "2. Pagar a empleado" << std::endl;
+                        std::cout << "3. Retirar dinero" << std::endl;
+                        std::cout << "4. Depositar dinero" << std::endl;
+                        std::cout << "5. Reiniciar mes" << std::endl;
+                        std::cout << "6. Comprar articulos" << std::endl;
+                        std::cout << "7. Consultar fondo" << std::endl;                        
+                        std::cout << "8. Salir" << std::endl;
+                        std::cout << "Ingresa una opcion: ";
+                        std::cin >> op;
+                        switch(op){
+                            case 1:
+                                std::cout << "Codigo: " << Juan.get_codempleado() << std::endl;
+                                std::cout << "Nombre: " << Juan.get_nombre() << std::endl;
+                                std::cout << "Turno: " << Juan.get_turno() << std::endl;
+                                std::cout << "Sueldo: " << Juan.get_sueldo() << std::endl;
+                                std::cout << "Paga: " << Juan.get_paga() << std::endl;
+                            break;
+                            
+                            case 2:
+                                Juan.set_paga(Juan.get_sueldo());
+                                std::cout << "Ingrese bono: ";
+                                std::cin >> a;
+                                Juan.bono(a);
+                                std::cout << "Ingrese descuento: ";
+                                std::cin >> a;
+                                Juan.descuento(a);
+                                std::cout << "Paga total: " << Juan.get_paga() << std::endl;
+                                usuario.retiro(Juan.get_paga());
+                            break;
+
+                            case 3:
+                                std::cout << "Ingrese cantidad a retirar: ";
+                                std::cin >> a;
+                                usuario.retiro(a);
+                            break;
+
+                            case 4:
+                                std::cout << "Ingrese cantidad a aumentar: ";
+                                std::cin >> a;
+                                usuario.aumento(a);
+                            break;
+
+                            case 5:
+                                std::cout << "Ingrese cantidad con la que se iniciara el mes: ";
+                                std::cin >> a;
+                                    usuario.reinicia_mes(a);
+                            break;
+
+                            case 6:
+                                std::cout << "Cantidad a comprar: ";
+                                std::cin >> a;
+                                agua.compra(a);
+                                usuario.retiro(agua.get_pcompra() * a);
+                            break;
+
+                            case 7:
+                                std::cout << usuario.get_fondo() << std::endl;
+                            break;
+
+                            case 8:
+                                continuar = false;
+                            break;
+
+                            default:
+                                std::cout << "Opcion invalida";
+                            break;
+                        }
+                    }
+                }
+                else if(contra == 0){
+                    cont = false;
+                }
+                else
+                    std::cout << "Contrasena incorrecta" << std::endl;
             break;
             case 2:
-            int vent;
-            std::cout << std::endl;
-            std::cout << "Botellas vendidas: ";
-            std::cin >> vent;
-            std::cout << "Producto: " << agua.get_nombre() << std::endl;
-            std::cout << "Codigo: : " << agua.get_codigo() << std::endl;
-            std::cout << "Precio compra: " << agua.get_pcompra() << std::endl;
-            std::cout << "Precio venta: " << agua.get_pventa() << std::endl;
-            std::cout << "Existencias: " << agua.get_existencia() << std::endl;
-            agua.venta(vent);
-            std::cout << std::endl;
-            std::cout << "Producto: " << agua.get_nombre() << std::endl;
-            std::cout << "Codigo: : " << agua.get_codigo() << std::endl;
-            std::cout << "Precio compra: " << agua.get_pcompra() << std::endl;
-            std::cout << "Precio venta: " << agua.get_pventa() << std::endl;
-            std::cout << "Existencias despues de venta: " << agua.get_existencia() << std::endl;
-            std::cout << std::endl;
+                std::cout << "Cantidad a vender: ";
+                std::cin >> a;
+                agua.venta(a);
+                usuario.aumento(agua.get_pventa() * a);
             break;
-            case 3:
-            float bon;
-            std::cout << std::endl;
-            std::cout << "Porcentaje de bono: ";
-            std::cin >> bon;
-            std::cout << "Empleado: " << Juan.get_nombre() << std::endl;
-            std::cout << "Turno: : " << Juan.get_turno() << std::endl;
-            std::cout << "Codigo de empleado: " << Juan.get_codempleado() << std::endl;
-            std::cout << "Contrasena: " << Juan.get_contrasena() << std::endl;
-            std::cout << "Paga: " << Juan.get_paga() << std::endl;
-            Juan.bono(bon);
-            std::cout << std::endl;
-            std::cout << "Empleado: " << Juan.get_nombre() << std::endl;
-            std::cout << "Turno: : " << Juan.get_turno() << std::endl;
-            std::cout << "Codigo de empleado: " << Juan.get_codempleado() << std::endl;
-            std::cout << "Contrasena: " << Juan.get_contrasena() << std::endl;
-            std::cout << "Paga con bono: " << Juan.get_paga() << std::endl;
-            std::cout << std::endl;
-            break;
-            case 4:
-            float desc;
-            std::cout << std::endl;
-            std::cout << "Porcentaje de descuento: ";
-            std::cin >> desc;
-            std::cout << "Empleado: " << Juan.get_nombre() << std::endl;
-            std::cout << "Turno: : " << Juan.get_turno() << std::endl;
-            std::cout << "Codigo de empleado: " << Juan.get_codempleado() << std::endl;
-            std::cout << "Contrasena: " << Juan.get_contrasena() << std::endl;
-            std::cout << "Paga: " << Juan.get_paga() << std::endl;
-            Juan.descuento(desc);
-            std::cout << std::endl;
-            std::cout << "Empleado: " << Juan.get_nombre() << std::endl;
-            std::cout << "Turno: : " << Juan.get_turno() << std::endl;
-            std::cout << "Codigo de empleado: " << Juan.get_codempleado() << std::endl;
-            std::cout << "Contrasena: " << Juan.get_contrasena() << std::endl;
-            std::cout << "Paga con descuento: " << Juan.get_paga() << std::endl;
-            std::cout << std::endl;
-            break;
-            case 5:
-            float ret;
-            std::cout << std::endl;
-            std::cout << "Cantidad retirada: ";
-            std::cin >> ret;
-            std::cout << "Jefe: " << Ana.get_nombre() << std::endl;
-            std::cout << "Codigo: " << Ana.get_codigo() << std::endl;
-            std::cout << "Contrasena: " << Ana.get_contrasena() << std::endl;
-            std::cout << "Ganancias: " << Ana.get_ganancias() << std::endl;
-            Ana.retiro(ret);
-            std::cout << std::endl;
-            std::cout << "Jefe: " << Ana.get_nombre() << std::endl;
-            std::cout << "Codigo: " << Ana.get_codigo() << std::endl;
-            std::cout << "Contrasena: " << Ana.get_contrasena() << std::endl;
-            std::cout << "Ganancias despues de retiro: " << Ana.get_ganancias() << std::endl;
-            std::cout << std::endl;
-            break;
-            case 6:
-            float aum;
-            std::cout << std::endl;
-            std::cout << "Cantidad ingresada: ";
-            std::cin >> aum;
-            std::cout << "Jefe: " << Ana.get_nombre() << std::endl;
-            std::cout << "Codigo: " << Ana.get_codigo() << std::endl;
-            std::cout << "Contrasena: " << Ana.get_contrasena() << std::endl;
-            std::cout << "Ganancias: " << Ana.get_ganancias() << std::endl;
-            Ana.aumento(aum);
-            std::cout << std::endl;
-            std::cout << "Jefe: " << Ana.get_nombre() << std::endl;
-            std::cout << "Codigo: " << Ana.get_codigo() << std::endl;
-            std::cout << "Contrasena: " << Ana.get_contrasena() << std::endl;
-            std::cout << "Ganancias despues de ingreso: " << Ana.get_ganancias() << std::endl;
-            std::cout << std::endl;
-            break;
-            case 7:
-            continua = false;
+            default:
+                std::cout << "Opcion invaida" << std::endl;
         }
     }
 }

@@ -4,24 +4,24 @@ class Jefe{
     private:
     std::string nombre;
     int codigo, contrasena;
-    float ganancias;
-    // Aunque ganancias no sea propiamente un atributo de jefe, se incluye porque este es el unico usuario que las controla
+    float fondo;
+    // Aunque fondo no sea propiamente un atributo de jefe, se incluye porque este es el unico usuario que las controla
 
     public:
-    Jefe(): nombre(""), codigo(0), contrasena(0), ganancias(0){};
-    Jefe(std::string nom, int cod, int cont, float gan): nombre(nom), codigo(cod), contrasena(cont), ganancias(gan){};
+    Jefe(): nombre(""), codigo(0), contrasena(0), fondo(0){};
+    Jefe(std::string nom, int cont): nombre(nom), codigo(0), contrasena(cont), fondo(0){};
 
     std::string get_nombre();
     int get_codigo();
     int get_contrasena();
-    float get_ganancias();
+    float get_fondo();
 
     void set_nombre(std::string);
-    void set_codigo(int);
     void set_contrasena(int);
-    void set_ganancias(float);
     void retiro(float ret);
     void aumento(float aum);
+    void reinicia_mes(float fon);
+    // Ya que al terminar mes se retiran las ganancias y se inicia con un presupuesto, en vez de "set_fondo", hay un termina mes
 };
 
 std::string Jefe::get_nombre(){
@@ -36,30 +36,26 @@ int Jefe::get_contrasena(){
     return contrasena;
 }
 
-float Jefe::get_ganancias(){
-    return ganancias;
+float Jefe::get_fondo(){
+    return fondo;
 }
 
 void Jefe::set_nombre(std::string nom){
     nombre = nom;
 }
 
-void Jefe::set_codigo(int cod){
-    codigo = cod;
-}
-
 void Jefe::set_contrasena(int cont){
     contrasena = cont;
 }
 
-void Jefe::set_ganancias(float gan){
-    ganancias = gan;
+void Jefe::reinicia_mes(float fon){
+    fondo = fon;
 }
 
 void Jefe::retiro(float ret){
-    ganancias = ganancias - ret;
+    fondo = fondo - ret;
 }
 
 void Jefe::aumento(float aum){
-    ganancias = ganancias + aum;
+    fondo = fondo + aum;
 }
