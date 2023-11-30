@@ -1,4 +1,7 @@
 # Proyecto-Pensamiento-Computacional-Orientado-a-Objetos
+
+Descripción y funcionalidad
+
 Proyecto que maneja los ingresos y egresos de una tienda, siendo estos, la compra de productos, la paga a los empleados, ventas, entre otros.
 
 El proyecto cuenta con dos tipos de personas: Empleados y Jefes. El usuario hace de jefe, pudiendo consultar tanto el fondo de dinero de la tienda (que se altera con cada movimiento que se hace), el empleado, los articulos y hacer otra serie de acciones.
