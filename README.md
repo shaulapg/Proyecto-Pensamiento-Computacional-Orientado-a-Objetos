@@ -12,9 +12,13 @@ Se comienza ingresando los datos para poder crear al Jefe, despues se elige si s
 # Consideraciones
 
 Idioma de interfaz: Español
+
 Lenguaje: C++ estarndar
-Compilar en terminal con g++ PlantaToyota.cpp Modelo.h Work.h
+
+Compilar en terminal con g++ main.cpp articulos.h fondo.h personas.h
+
 Windows a.exe
+
 Linux ./a.out
 
 # Correcciones
