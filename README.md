@@ -23,21 +23,20 @@ Linux ./a.out
 
 # Correcciones
 
-Version 1: Se crearon los archivos main.cpp articulo.h jefe.h empleados.h Los archivos .h tenian sus respectivos objetos, nombrados igual que el archivo, mientras que el main tenía una interfaz de usuario basica. No todas las funciones estaban disponibles, además de que las ganancias no funcioanaban completamente [lineas 55-65 en Jefe.h].
-
-SICT0302-Toma de decisiones: Se crearon los archivos a base de la necesidad del proyecto.
-
+Version 1: Se crearon los archivos main.cpp articulo.h jefe.h empleados.h Los archivos .h tenian sus respectivos objetos, nombrados igual que el archivo. No todas las funciones estaban disponibles, además de que las ganancias no funcioanaban completamente [lineas 55-65 en Jefe.h].
+SICT0303-Implementación de acciones: Creacion de constructores, getters y setters [13-74 en articulos.h] [13-81 en empleados.h] [14-65 en jefe.h].
+SICT0401-Aplicación de estándares y normas: Implementacion del readme.
+SEG0702-Tecnologías de vanguardia: Uso de github.
 
 Version 2: No hubo alteración del cógido. Implementación del diagrama UML.
-
-SEG0702-Tecnologías de vanguardia: Se aplico el uso del diagrama UML para una planeación básica del proyecto en base a herencia, composicion y agregacion a base del programa existente y el objetivo final.
-
+SICT0302-Toma de decisiones: Diseño del diagrama de clases basado en las necesidades del proyecto, agregando herencia y señalando la ultilidad y funcionamiento de las clases.
 
 Version 3: Se implemento la idea base del diagrama, pero este se corrigio. Se agrego el archivo fondo.h en vez de tenerlo como un atributo de Jefe, ademas de agregar la herencia: se creo personas.h para poder derivar Jefe [lineas 109-138] y Empleados [lineas 66-107]. Respecto al diagrama se adapto la interaccion simple de las clases.
-
-SICT0303-Implementación de acciones: A partir del UML se crearon y modificaron los archivos para poder implementar herencia y composicion.
-
+SICT0302-Toma de decisiones: Se utilizo agrgacion en el diagrama de clases. Se adapto el codigo al UML: "Se agrego el archivo fondo.h en vez de tenerlo como un atributo de Jefe."
+SICT0303-Implementación de acciones: Implementacion de herencia: "Se agrego la herencia: se creo personas.h para poder derivar Jefe [lineas 109-138] y Empleados [lineas 66-107]."
+SICT0401-Aplicación de estándares y normas: Se siguio el formato de codigo para un mejor entendimiento de este.
+SEG0702-Tecnologías de vanguardia: Acutalizacion de github.
 
 Version 4: Se agregaron comentarios en todo el codigo. Se arreglo un prorblema minimo en la opcion de compra de articulos [lineas 97-98 en main.cpp]
-
 SICT0401-Aplicación de estándares y normas: Se crearon comentarios explicativos en todos los archivos para una mejor exposicion del codigo.
+SEG0702-Tecnologías de vanguardia: Acutalizacion del readme.
