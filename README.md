@@ -20,4 +20,4 @@ Linux ./a.out
 # Correcciones
 
 Version 1: Se crearon loa archivos main.cpp articulo.h jefe.h empleados.h Los archivos .h tenian sus respectivos objetos, nombrados igual que el archivo, mientras que el main tenía una interfaz de usuario basica.
-SICT0303-Implementación de acciones: 
+SICT0303-Implementación de acciones: Se crearon los archivos a base de la necesidad del proyecto.
